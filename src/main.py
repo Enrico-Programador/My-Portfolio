@@ -1,3 +1,7 @@
 from textnode import TextNode
-print("Hello World")
-TextNode("This is some anchor text", "link", "https://www.boot.dev")
+
+def main():
+    node = TextNode("This is some anchor text", "link", "https://www.boot.dev")
+    print(node)
+
+main()
