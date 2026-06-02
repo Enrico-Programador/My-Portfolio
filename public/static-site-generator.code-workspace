@@ -1,0 +1,9 @@
+{
+	"folders": [
+		{
+			"name": "static-site-generator",
+			"path": ".."
+		}
+	],
+	"settings": {}
+}
