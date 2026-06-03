@@ -10,7 +10,7 @@ class TextTypes(Enum):
 
 class TextNode():
                 #textype is a member of the Enum
-    def __init__(self, text, textType, url):
+    def __init__(self, text, textType, url=None):
         self.text = text
         self.textType = textType
         self.url = url
