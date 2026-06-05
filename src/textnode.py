@@ -6,7 +6,7 @@ class TextTypes(Enum):
     ITALIC = "italic"
     CODE = "code"
     LINK = "link"
-    IMAGE = "link"
+    IMAGE = "image"
 
 class TextNode():
                 #textype is a member of the Enum
