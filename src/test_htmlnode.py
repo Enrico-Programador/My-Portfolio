@@ -34,7 +34,7 @@ class TestHTMLNode(unittest.TestCase):
             "HTMLNode(p, What a strange world, None, {'class': 'primary'})",
         )
 
-'''       
+     
     def test_to_html_with_children(self):
         child_node = LeafNode("span", "child")
         parent_node = ParentNode("div", [child_node])
@@ -48,7 +48,7 @@ class TestHTMLNode(unittest.TestCase):
             parent_node.to_html(),
             "<div><span><b>grandchild</b></span></div>",
             )
-'''
+
 
 if __name__ == "__main__":
     unittest.main()

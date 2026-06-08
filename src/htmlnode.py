@@ -33,15 +33,17 @@ class ParentNode(HTMLNode):
         if self.children is None:
             raise ValueError("Children is none")
         
-        all_values = []
+        return_value = ""
         for child in self.children:
             if child.children:
+                return_value = child.to_html()
                 
-                all_values.append(child.to_html())
             else:
-                all_values.append(child)
-        print(f"all value {all_values}")
-        return #return??
+                
+                john = self.children
+                return f"<{self.tag}><{john[0].tag}>{john[0].value}</{john[0].tag}></{self.tag}>"
+        print(f"<{self.tag}>{return_value}</{self.tag}>")
+        return f"<{self.tag}>{return_value}</{self.tag}>"
 
 
 class LeafNode(HTMLNode):
