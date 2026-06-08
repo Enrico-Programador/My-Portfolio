@@ -32,9 +32,16 @@ class ParentNode(HTMLNode):
             raise ValueError("Tag is none")
         if self.children is None:
             raise ValueError("Children is none")
-        #self.children.to_html()
-
-        return f"{self.tag} {self.children.to_html} {self.tag}"
+        
+        all_values = []
+        for child in self.children:
+            if child.children:
+                
+                all_values.append(child.to_html())
+            else:
+                all_values.append(child)
+        print(f"all value {all_values}")
+        return #return??
 
 
 class LeafNode(HTMLNode):
