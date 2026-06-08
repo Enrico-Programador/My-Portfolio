@@ -34,16 +34,11 @@ class ParentNode(HTMLNode):
             raise ValueError("Children is none")
         
         return_value = ""
+        
         for child in self.children:
-            if child.children:
-                return_value = child.to_html()
+            return_value = return_value + child.to_html()
                 
-            else:
-                
-                john = self.children
-                return f"<{self.tag}><{john[0].tag}>{john[0].value}</{john[0].tag}></{self.tag}>"
-        print(f"<{self.tag}>{return_value}</{self.tag}>")
-        return f"<{self.tag}>{return_value}</{self.tag}>"
+        return f"<{self.tag}{self.props_to_html()}>{return_value}</{self.tag}>"
 
 
 class LeafNode(HTMLNode):
