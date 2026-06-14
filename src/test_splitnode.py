@@ -100,7 +100,7 @@ class TestSplit_nodes_delimiter(unittest.TestCase):
             ],
             new_nodes,
         )
-'''
+
     def test_delim_bold_and_italic(self):
         node = TextNode("**bold** and _italic_", TextTypes.TEXT)
         new_nodes = split_nodes_delimiter([node], "**", TextTypes.BOLD)
@@ -113,4 +113,4 @@ class TestSplit_nodes_delimiter(unittest.TestCase):
             ],
             new_nodes,
         )
-        '''
+        

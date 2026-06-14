@@ -18,11 +18,9 @@ def split_nodes_delimiter(old_nodes: list[TextNode], delimiter: str, text_type: 
             if j%2 == 1:
                 next_node = TextNode(f"{new_nodes[i]}", text_type)
             else:
-                next_node = TextNode(f"{new_nodes[i]}", TextTypes.TEXT)
+                next_node = TextNode(f"{new_nodes[i]}", nodes.textType)
                 
-            print(f"value: {next_node.text}")
             if next_node.text.strip() != "":
-                print("inserting...")
                 new_nodes_list.append(next_node)
             j += 1
 
