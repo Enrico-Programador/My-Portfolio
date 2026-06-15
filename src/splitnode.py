@@ -28,6 +28,7 @@ def split_nodes_delimiter(old_nodes: list[TextNode], delimiter: str, text_type: 
             raise Exception("Markdown was not closed")
                 
         starting_index = starting_index + len(new_nodes)
+    
         
     return new_nodes_list
     
