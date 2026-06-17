@@ -41,10 +41,7 @@ def split_nodes_image(old_nodes: list[TextNode]) -> list[TextNode]:
         extracted_images = extract_markdown_images(node.text)
         if len(extracted_images)<=0:
             return [node]
-        
-        print(extracted_images)
 
-        
         new_nodes.extend(node.text.split(f"![{extracted_images[0][0]}]({extracted_images[0][1]})", 1))
         remove_old = new_nodes.pop()
         new_nodes.append(TextNode(f"{extracted_images[0][0]}", TextTypes.IMAGE, f"{extracted_images[0][1]}"))
