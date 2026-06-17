@@ -36,19 +36,19 @@ def split_nodes_delimiter(old_nodes: list[TextNode], delimiter: str, text_type: 
 def split_nodes_image(old_nodes: list[TextNode]) -> list[TextNode]:
     new_nodes = []
     new_nodes_list = []
+    print(old_nodes)
     for node in old_nodes:
         extracted_images = extract_markdown_images(node.text)
         if len(extracted_images)<=0:
             return [node]
         
         print(extracted_images)
-        i = 0
-        j = 0
+
         
         new_nodes.extend(node.text.split(f"![{extracted_images[0][0]}]({extracted_images[0][1]})", 1))
         remove_old = new_nodes.pop()
         new_nodes.append(TextNode(f"{extracted_images[0][0]}", TextTypes.IMAGE, f"{extracted_images[0][1]}"))
-        return [new_nodes, [split_nodes_image(TextNode(remove_old,TextTypes.TEXT,))]]
+        return new_nodes + split_nodes_image([TextNode(remove_old,TextTypes.TEXT,)])
         #will run for all images found in the node
         for i in range(len(extracted_images)):
             pass
