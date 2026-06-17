@@ -10,5 +10,5 @@ def main():
         TextTypes.TEXT,
     )
     new_nodes = split_nodes_image([node])
-    
+    print(new_nodes)
 main()
