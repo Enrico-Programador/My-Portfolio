@@ -8,30 +8,29 @@ from textnode import TextNode, TextTypes
 def split_nodes_delimiter(old_nodes: list[TextNode], delimiter: str, text_type: TextTypes) -> list[TextNode]:
     
     new_nodes = []
-    new_nodes_list = []
-    starting_index = 0
-
+    
     for nodes in old_nodes:
-        
-        j = 0
-        new_nodes.extend(nodes.text.split(delimiter))
-        
-        for i in range(starting_index, len(new_nodes)):
-                    
-            if j%2 == 1:
-                next_node = TextNode(f"{new_nodes[i]}", text_type)
-            else:
-                next_node = TextNode(f"{new_nodes[i]}", nodes.textType)
-                
-            if next_node.text.strip() != "":
-                new_nodes_list.append(next_node)
-            j += 1
+        if nodes.textType != TextTypes.TEXT:
+            new_nodes.append(nodes)
+            continue
 
-        if j%2 == 0:
-            raise Exception("Markdown was not closed")
+        split_nodes = nodes.text.split(delimiter)
+        if len(nodes.text.split(delimiter)) % 2 == 0:
+            raise ValueError("Invalid markdown, formatted section not closed")
+        
+        for i in range(0, len(split_nodes)):
+            
+            if i%2 == 0:
+                next_node = TextNode(f"{split_nodes[i]}", TextTypes.TEXT)
+                if next_node.text.strip() != "":
+                    new_nodes.append(next_node)
                 
-        starting_index = starting_index + len(new_nodes)
-    return new_nodes_list
+            elif i%2 == 1:
+                next_node = TextNode(f"{split_nodes[i]}", text_type)
+                if next_node.text.strip() != "":
+                    new_nodes.append(next_node)
+                
+    return new_nodes
 
 
 def split_nodes_image(old_nodes: list[TextNode]) -> list[TextNode]:
@@ -55,7 +54,7 @@ def split_nodes_image(old_nodes: list[TextNode]) -> list[TextNode]:
                 next_node = nodes
             else:
                 next_node = TextNode(nodes, TextTypes.TEXT)
-                
+            
             if next_node.text.strip() != "":
                 new_nodes_list.append(next_node)
             j += 1
@@ -119,15 +118,11 @@ def text_to_textnodes(text: str):
             text,
             TextTypes.TEXT,
             )
-    #new_nodes = split_nodes_delimiter([new_nodes], 
-                #        "bold", 
-                    #    TextTypes.TEXT,)
-    new_nodes = split_nodes_delimiter([new_nodes], 
-                        "italic", 
-                        TextTypes.TEXT,)
+    new_nodes = split_nodes_delimiter([new_nodes], "**", TextTypes.BOLD)
+    new_nodes = split_nodes_delimiter(new_nodes, "_", TextTypes.ITALIC)
     #new_nodes = split_nodes_delimiter(new_nodes, 
-   #                     "code", 
-        #                TextTypes.TEXT,)
-   # new_nodes = split_nodes_image(new_nodes)
+      #                  "`", 
+     #                   TextTypes.CODE,)
+    #new_nodes = split_nodes_image(new_nodes)
     #new_nodes = split_nodes_link(new_nodes)
     return new_nodes

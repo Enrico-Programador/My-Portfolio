@@ -28,16 +28,8 @@ class TestSplit_nodes_delimiter(unittest.TestCase):
             TextNode(" word", TextTypes.TEXT),
                 ], new_nodes)
         
-    def test_split_nodes_delimiter3(self):
-        node = TextNode("`code block`", TextTypes.CODE)
-        new_nodes = split_nodes_delimiter([node], "`", TextTypes.CODE)
-        
-        self.assertEqual([
-            TextNode("code block", TextTypes.CODE),
-                ], new_nodes)
-        
 
-    def test_split_nodes_delimiter4(self):
+    def test_split_nodes_delimiter3(self):
         node = TextNode("This is text with two `code block` word `code block` ", TextTypes.TEXT)
         new_nodes = split_nodes_delimiter([node], "`", TextTypes.CODE)
         self.assertEqual(new_nodes, [
