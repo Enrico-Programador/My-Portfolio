@@ -1,6 +1,3 @@
-
-import re
-
 from extractmarkdown import split_nodes_image_markdown, split_nodes_link_markdown
 from textnode import TextNode, TextTypes
 
@@ -46,11 +43,11 @@ def split_nodes_link(old_nodes: list[TextNode]) -> list[TextNode]:
     return new_nodes
     
 def text_to_textnodes(text: str):
-    new_nodes = TextNode(
+    new_nodes = [TextNode(
             text,
             TextTypes.TEXT,
-            )
-    new_nodes = split_nodes_delimiter([new_nodes], "**", TextTypes.BOLD)
+            )]
+    new_nodes = split_nodes_delimiter(new_nodes, "**", TextTypes.BOLD)
     new_nodes = split_nodes_delimiter(new_nodes, "_", TextTypes.ITALIC)
     new_nodes = split_nodes_delimiter(new_nodes, "`", TextTypes.CODE,)
     new_nodes = split_nodes_image(new_nodes)

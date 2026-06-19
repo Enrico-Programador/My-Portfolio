@@ -1,6 +1,6 @@
 import unittest
 from htmlnode import HTMLNode, LeafNode, ParentNode
-from splitnode import split_nodes_delimiter, split_nodes_image, split_nodes_link
+from splitnode import split_nodes_delimiter, split_nodes_image, split_nodes_link, text_to_textnodes
 from textnode import TextNode, TextTypes
 
 class TestSplit_nodes_delimiter(unittest.TestCase):
@@ -183,5 +183,23 @@ class TestSplit_nodes_delimiter(unittest.TestCase):
                 TextNode("another link", TextTypes.LINK, "https://wikipedia.org"),
                 TextNode(" with text that follows", TextTypes.TEXT),
             ],
+            new_nodes,
+        )
+
+    def test_text_to_textnodes(self):
+        new_nodes = text_to_textnodes("This is **text** with an _italic_ word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)")
+        self.assertListEqual(
+            [
+                TextNode("This is ", TextTypes.TEXT),
+                TextNode("text", TextTypes.BOLD),
+                TextNode(" with an ", TextTypes.TEXT),
+                TextNode("italic", TextTypes.ITALIC),
+                TextNode(" word and a ", TextTypes.TEXT),
+                TextNode("code block", TextTypes.CODE),
+                TextNode(" and an ", TextTypes.TEXT),
+                TextNode("obi wan image", TextTypes.IMAGE, "https://i.imgur.com/fJRm4Vk.jpeg"),
+                TextNode(" and a ", TextTypes.TEXT),
+                TextNode("link", TextTypes.LINK, "https://boot.dev"),
+                ],
             new_nodes,
         )
