@@ -12,6 +12,7 @@ def split_nodes_delimiter(old_nodes: list[TextNode], delimiter: str, text_type: 
     starting_index = 0
 
     for nodes in old_nodes:
+        
         j = 0
         new_nodes.extend(nodes.text.split(delimiter))
         
@@ -44,7 +45,7 @@ def split_nodes_image(old_nodes: list[TextNode]) -> list[TextNode]:
                 return []
             return [node]
 
-        new_nodes.extend(node.text.split(f"[{extracted_images[0][0]}]({extracted_images[0][1]})",1))
+        new_nodes.extend(node.text.split(f"![{extracted_images[0][0]}]({extracted_images[0][1]})", 1))
         remove_old = new_nodes.pop()
         new_nodes.append(TextNode(f"{extracted_images[0][0]}", TextTypes.IMAGE, f"{extracted_images[0][1]}"))
 
@@ -62,7 +63,8 @@ def split_nodes_image(old_nodes: list[TextNode]) -> list[TextNode]:
         if j%2 == 1:
             raise Exception("Markdown was not closed")
         
-        return new_nodes_list + split_nodes_image([TextNode(remove_old,TextTypes.TEXT,)])
+        return new_nodes_list + split_nodes_image([TextNode
+                                                   (remove_old,TextTypes.TEXT,)])
         
       
 def split_nodes_link(old_nodes: list[TextNode]) -> list[TextNode]:
@@ -99,3 +101,33 @@ def split_nodes_link(old_nodes: list[TextNode]) -> list[TextNode]:
             raise Exception("Markdown was not closed")
 
         return new_nodes_list + split_nodes_link([TextNode(remove_old, TextTypes.TEXT)])
+    
+'''
+    TEXT = "text"
+    BOLD = "bold"
+    ITALIC = "italic"
+    CODE = "code"
+    LINK = "link"
+    IMAGE = "image" 
+
+'''
+
+#model: new_nodes = split_nodes_delimiter(new_nodes, "_", TextTypes.ITALIC) 
+
+def text_to_textnodes(text: str):
+    new_nodes = TextNode(
+            text,
+            TextTypes.TEXT,
+            )
+    #new_nodes = split_nodes_delimiter([new_nodes], 
+                #        "bold", 
+                    #    TextTypes.TEXT,)
+    new_nodes = split_nodes_delimiter([new_nodes], 
+                        "italic", 
+                        TextTypes.TEXT,)
+    #new_nodes = split_nodes_delimiter(new_nodes, 
+   #                     "code", 
+        #                TextTypes.TEXT,)
+   # new_nodes = split_nodes_image(new_nodes)
+    #new_nodes = split_nodes_link(new_nodes)
+    return new_nodes
