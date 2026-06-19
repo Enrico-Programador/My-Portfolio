@@ -1,7 +1,7 @@
 
 import re
 
-from extractmarkdown import extract_markdown_images, extract_markdown_links
+from extractmarkdown import split_nodes_image_markdown, split_nodes_link_markdown
 from textnode import TextNode, TextTypes
 
 
@@ -35,88 +35,16 @@ def split_nodes_delimiter(old_nodes: list[TextNode], delimiter: str, text_type: 
 
 def split_nodes_image(old_nodes: list[TextNode]) -> list[TextNode]:
     new_nodes = []
-    new_nodes_list = []
-    
     for node in old_nodes:
-        if node.textType != TextTypes.TEXT:
-            new_nodes_list.append(node)
-            continue
-        extracted_images = extract_markdown_images(node.text)
-        if len(extracted_images)<=0:
-            
-            if node.text.strip() == "":
-                return []
-            return [node]
+        new_nodes = new_nodes + split_nodes_image_markdown([node])
+    return new_nodes
 
-        new_nodes.extend(node.text.split(f"![{extracted_images[0][0]}]({extracted_images[0][1]})", 1))
-        remove_old = new_nodes.pop()
-        new_nodes.append(TextNode(f"{extracted_images[0][0]}", TextTypes.IMAGE, f"{extracted_images[0][1]}"))
-
-        j = 0
-        for nodes in new_nodes:
-            if isinstance(nodes, TextNode):
-                next_node = nodes
-            else:
-                next_node = TextNode(nodes, TextTypes.TEXT)
-            
-            if next_node.text.strip() != "":
-                new_nodes_list.append(next_node)
-            j += 1
-
-        if j%2 == 1:
-            raise Exception("Markdown was not closed")
-        
-        return new_nodes_list + split_nodes_image([TextNode
-                                            (remove_old,TextTypes.TEXT,)])
-        
-      
 def split_nodes_link(old_nodes: list[TextNode]) -> list[TextNode]:
     new_nodes = []
-    new_nodes_list = []
-
     for node in old_nodes:
-        extracted_links = extract_markdown_links(node.text)
-
-        if len(extracted_links) <= 0:
-            if node.text.strip() == "":
-                return []
-            return [node]
-
-        new_nodes.extend(node.text.split(f"[{extracted_links[0][0]}]({extracted_links[0][1]})", 1,))
-
-        remove_old = new_nodes.pop()
-
-        new_nodes.append(TextNode(extracted_links[0][0],TextTypes.LINK,extracted_links[0][1],))
-
-        j = 0
-        for nodes in new_nodes:
-            if isinstance(nodes, TextNode):
-                next_node = nodes
-            else:
-                next_node = TextNode(nodes, TextTypes.TEXT)
-
-            if next_node.text.strip() != "":
-                new_nodes_list.append(next_node)
-
-            j += 1
-
-        if j % 2 == 1:
-            raise Exception("Markdown was not closed")
-
-        return new_nodes_list + split_nodes_link([TextNode(remove_old, TextTypes.TEXT)])
+        new_nodes = new_nodes + split_nodes_link_markdown([node])
+    return new_nodes
     
-'''
-    TEXT = "text"
-    BOLD = "bold"
-    ITALIC = "italic"
-    CODE = "code"
-    LINK = "link"
-    IMAGE = "image" 
-
-'''
-
-#model: new_nodes = split_nodes_delimiter(new_nodes, "_", TextTypes.ITALIC) 
-
 def text_to_textnodes(text: str):
     new_nodes = TextNode(
             text,
@@ -124,9 +52,7 @@ def text_to_textnodes(text: str):
             )
     new_nodes = split_nodes_delimiter([new_nodes], "**", TextTypes.BOLD)
     new_nodes = split_nodes_delimiter(new_nodes, "_", TextTypes.ITALIC)
-    new_nodes = split_nodes_delimiter(new_nodes, 
-                        "`", 
-                        TextTypes.CODE,)
+    new_nodes = split_nodes_delimiter(new_nodes, "`", TextTypes.CODE,)
     new_nodes = split_nodes_image(new_nodes)
-    #new_nodes = split_nodes_link(new_nodes)
+    new_nodes = split_nodes_link(new_nodes)
     return new_nodes
