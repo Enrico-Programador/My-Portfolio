@@ -1,4 +1,4 @@
-from extractmarkdown import split_nodes_image_markdown, split_nodes_link_markdown
+from extract_markdown import split_nodes_image_markdown, split_nodes_link_markdown
 from textnode import TextNode, TextTypes
 
 

@@ -1,5 +1,5 @@
-from blockmarkdown import markdown_to_blocks
-from extractmarkdown import extract_markdown_images
+from block_markdown import markdown_to_blocks
+from extract_markdown import extract_markdown_images
 from htmlnode import LeafNode, ParentNode
 from splitnode import split_nodes_delimiter, text_to_textnodes
 from textnode import TextNode, TextTypes, text_node_to_html_node
