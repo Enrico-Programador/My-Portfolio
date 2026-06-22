@@ -35,7 +35,7 @@ def split_nodes_image_markdown(old_nodes: list[TextNode]) -> list[TextNode]:
             j += 1
 
         if j%2 == 1:
-            raise Exception("Markdown was not closed")
+            raise Exception("Image markdown was not closed")
         
         return new_nodes_list + split_nodes_image_markdown([TextNode(remove_old,TextTypes.TEXT,)])
         
@@ -72,6 +72,6 @@ def split_nodes_link_markdown(old_nodes: list[TextNode]) -> list[TextNode]:
             j += 1
 
         if j % 2 == 1:
-            raise Exception("Markdown was not closed")
+            raise Exception("Link markdown was not closed")
 
         return new_nodes_list + split_nodes_link_markdown([TextNode(remove_old, TextTypes.TEXT)])
