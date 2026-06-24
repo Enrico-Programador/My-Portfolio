@@ -12,7 +12,7 @@ class BlockTypes(Enum):
 def markdown_to_blocks(markdown: str) -> list[str]:
     blocks = markdown.split("\n\n")
     filtered_blocks = []
-    print(blocks)
+
     for block in blocks:
         if block == "":
             continue
@@ -25,14 +25,14 @@ def markdown_to_blocks(markdown: str) -> list[str]:
 def block_to_block_type(markdown_text):
     if markdown_text.startswith(("# ", "## ", "### ","#### ","##### ","###### ")):
         return BlockTypes.HEADING
-    if markdown_text.startswith(("``` ")) and markdown_text.endswith(("```")):
+    if markdown_text.startswith(("```")) and markdown_text.endswith(("```")):
         return BlockTypes.CODE
     paragraphs = markdown_text.split("\n")
     is_quote = True
     is_unordered_list = True
     is_ordered_list = True
     i = 1
-    print(paragraphs)
+    
     for p in paragraphs:
         
         if p == "":
@@ -47,7 +47,7 @@ def block_to_block_type(markdown_text):
             pass
         else:
             is_unordered_list = False
-        print(i)
+        
         if p.startswith(f"{i}. ") and is_ordered_list == True:
             pass
         else:

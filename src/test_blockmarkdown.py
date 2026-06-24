@@ -1,6 +1,6 @@
     
 import unittest
-from block_markdown import markdown_to_blocks
+from block_markdown import BlockTypes, block_to_block_type, markdown_to_blocks
 
 class TestBlockMarkdown(unittest.TestCase):
     def test_markdown_to_blocks(self):
@@ -46,6 +46,68 @@ This is the same paragraph on a new line
             ],
         )
 
+    def test_markdown_to_blocks(self): 
+        md = """
+1. This is a
+2. ordered list
+3. very ordered
+"""
+        blocks = block_to_block_type(md)
+        self.assertEqual(
+            blocks,
+            BlockTypes.ORDERED_LIST
+            )
+        md = """
+- This is a
+- unordered list
+- very unordered
+"""
+        blocks = block_to_block_type(md)
+        self.assertEqual(
+            blocks,
+            BlockTypes.UNORDERED_LIST
+            )
+        md = """
+> This is a
+>quote paragraph
+> very quoty
+"""
+        blocks = block_to_block_type(md)
+        self.assertEqual(
+            blocks,
+            BlockTypes.QUOTE
+            )
+        
+        md = """``` This is a
+>code paragraph
+- with code```"""
 
+        blocks = block_to_block_type(md)
+        self.assertEqual(
+            blocks,
+            BlockTypes.CODE
+            )
+        md = """###### This is a
+>heading paragraph
+- with a heading```
+"""
+        blocks = block_to_block_type(md)
+        self.assertEqual(
+            blocks,
+            BlockTypes.HEADING
+            )
+        
+        md = """
+1. #This is a
+>normal paragraph```
+- anything special
+"""
+        blocks = block_to_block_type(md)
+        self.assertEqual(
+            blocks,
+            BlockTypes.PARAGRAPH
+            )
+
+        
 if __name__ == "__main__":
     unittest.main()
