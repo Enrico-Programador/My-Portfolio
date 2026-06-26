@@ -1,13 +1,19 @@
-from block_markdown import block_to_block_type, markdown_to_blocks
+
+from markdown_to_html import markdown_to_html_node
 
 
 def main():
     print("running main...")
     md = """
-1. This is a
-2. quote block
-3. very quoty
+This is **bolded** paragraph
+text in a p
+tag here
+
+This is another paragraph with _italic_ text and `code` here
+
 """
-    blocks = block_to_block_type(md)
-    print(f"Return value: {blocks}")
+
+    node = markdown_to_html_node(md)
+    
+    print(f"Return value: {node}")
 main()
