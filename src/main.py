@@ -5,7 +5,7 @@ from markdown_to_html import markdown_to_html_node
 def main():
     print("running main...")
     md = """
-This is **bolded** paragraph
+###### This is **bolded** heading
 text in a p
 tag here
 
