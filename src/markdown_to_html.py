@@ -44,28 +44,21 @@ def block_type_quote(block, block_type):
 def block_type_unordered_list(block, block_type):
     block_list = block.split("\n")
     nodes_list = []
-    i = 0
     for items in block_list:
-        i += 1
-        split = text_to_textnodes(items.replace(f'- ', ''))
-        leaf = text_node_to_html_node(split[0])
-        parent = ParentNode("li", [leaf])
+        text = items[2:]
+        parent = text_to_children(text, "li")
         nodes_list.append(parent)
-
     return ParentNode(block_type, nodes_list)
 
 def block_type_ordered_list(block, block_type):
-    block_list = block.split("\n")
+    items = block.split("\n")
     nodes_list = []
-    i = 0
-    for items in block_list:
-        i += 1
-        split = text_to_textnodes(items.replace(f'{i}. ', ''))
-        leaf = text_node_to_html_node(split[0])
-        parent = ParentNode("li", [leaf])
-        nodes_list.append(parent)
-
+    for item in items:
+        text = item[2:]
+        children = text_to_children(text,"li")
+        nodes_list.append(children)
     return ParentNode(block_type, nodes_list)
+
     
 
 def block_type_code(block):
@@ -91,14 +84,14 @@ def block_type_heading(block):
     to_replace = block[:7].replace('# ', '').replace('#','')
     new_block = to_replace + new_block 
 
-    return text_to_children(block, f"h{count}")
+    return text_to_children(new_block, f"h{count}")
 
 
 def block_type_paragraph(block, block_type):
     return text_to_children(block, block_type)
 
 def text_to_children(block, block_type):
-    split = text_to_textnodes(block.replace('\n', ' '))
+    split = text_to_textnodes(block.replace('\n', ' ').strip())
     nodes_list = []
     for nodes in split:
         leaf = text_node_to_html_node(nodes)

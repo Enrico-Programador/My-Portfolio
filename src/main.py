@@ -5,16 +5,19 @@ from markdown_to_html import markdown_to_html_node
 def main():
     print("running main...")
     md = """
-# this is an h1
+- This is a list
+- with items
+- and _more_ items
 
-this is paragraph text
+1. This is an `ordered` list
+2. with items
+3. and more items
 
-## this is an h2
 """
 
     node = markdown_to_html_node(md)
     html = node.to_html()
     print(f"Return value: {html}")
-    print("Expected return value: <div><h1>this is an h1</h1><p>this is paragraph text</p><h2>this is an h2</h2></div>")
-
+    print("Expected return value: <div><ul><li>This is a list</li><li>with items</li><li>and <i>more</i> items</li></ul><ol><li>This is an <code>ordered</code> list</li><li>with items</li><li>and more items</li></ol></div>")
+        
 main()
