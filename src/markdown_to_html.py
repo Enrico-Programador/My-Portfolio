@@ -1,7 +1,7 @@
 from block_markdown import BlockTypes, block_to_block_type, markdown_to_blocks
 from htmlnode import ParentNode
 from splitnode import text_to_textnodes
-from textnode import TextTypes, text_node_to_html_node
+from textnode import TextNode, TextTypes, text_node_to_html_node
 
 
 def markdown_to_html_node(markdown):
@@ -12,12 +12,72 @@ def markdown_to_html_node(markdown):
         block_type = block_to_block_type(block)
 
         if block_type == BlockTypes.PARAGRAPH:
-            return_list.append(block_type_paragraph(block))
+            return_list.append(block_type_paragraph(block, "p"))
             
         if block_type == BlockTypes.HEADING:
             return_list.append(block_type_heading(block))
 
+        if block_type == BlockTypes.CODE:
+            return_list.append(block_type_code(block))
+
+        if block_type == BlockTypes.ORDERED_LIST:
+            return_list.append(block_type_ordered_list(block, "ol"))
+
+        if block_type == BlockTypes.UNORDERED_LIST:
+            return_list.append(block_type_unordered_list(block, "ul"))
+
+        if block_type == BlockTypes.QUOTE:
+            return_list.append(block_type_quote(block, "blockquote"))
+
     return ParentNode("div", return_list)
+
+
+def block_type_quote(block, block_type):
+    split = text_to_textnodes(block.replace('\n', ' ').replace('> ', '').replace('>', ''))
+    nodes_list = []
+    for nodes in split:
+        leaf = text_node_to_html_node(nodes)
+        nodes_list.append(leaf)
+
+    return ParentNode(block_type, nodes_list)
+
+def block_type_unordered_list(block, block_type):
+    block_list = block.split("\n")
+    nodes_list = []
+    i = 0
+    for items in block_list:
+        i += 1
+        split = text_to_textnodes(items.replace(f'- ', ''))
+        leaf = text_node_to_html_node(split[0])
+        parent = ParentNode("li", [leaf])
+        nodes_list.append(parent)
+
+    return ParentNode(block_type, nodes_list)
+
+def block_type_ordered_list(block, block_type):
+    block_list = block.split("\n")
+    nodes_list = []
+    i = 0
+    for items in block_list:
+        i += 1
+        split = text_to_textnodes(items.replace(f'{i}. ', ''))
+        leaf = text_node_to_html_node(split[0])
+        parent = ParentNode("li", [leaf])
+        nodes_list.append(parent)
+
+    return ParentNode(block_type, nodes_list)
+    
+
+def block_type_code(block):
+    block = block[4:-3]
+    split = TextNode(
+            block,
+            TextTypes.TEXT,
+            )
+    child = text_node_to_html_node(split)
+    code = ParentNode("code", [child])
+    return ParentNode("pre", [code])
+
 
 def block_type_heading(block):
     block = block.replace('\n', ' ')
@@ -31,19 +91,17 @@ def block_type_heading(block):
     to_replace = block[:7].replace('# ', '').replace('#','')
     new_block = to_replace + new_block 
 
-    split = text_to_textnodes(new_block)
-    nodes_list = []
-    for nodes in split:
-        leaf = text_node_to_html_node(nodes)
-        nodes_list.append(leaf)
+    return text_to_children(block, f"h{count}")
 
-    return ParentNode(f"h{count}", nodes_list)
 
-def block_type_paragraph(block):
+def block_type_paragraph(block, block_type):
+    return text_to_children(block, block_type)
+
+def text_to_children(block, block_type):
     split = text_to_textnodes(block.replace('\n', ' '))
     nodes_list = []
     for nodes in split:
         leaf = text_node_to_html_node(nodes)
         nodes_list.append(leaf)
 
-    return ParentNode("p", nodes_list)
+    return ParentNode(block_type, nodes_list)
