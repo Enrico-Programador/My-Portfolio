@@ -1,23 +1,18 @@
-
-from markdown_to_html import markdown_to_html_node
+import os
+import shutil
 
 
 def main():
     print("running main...")
-    md = """
-- This is a list
-- with items
-- and _more_ items
+    shutil.rmtree(path='./public')
+    os.mkdir(path='./public')
+    path = os.listdir(path='./static')
+    get_files(path)
 
-1. This is an `ordered` list
-2. with items
-3. and more items
-
-"""
-
-    node = markdown_to_html_node(md)
-    html = node.to_html()
-    print(f"Return value: {html}")
-    print("Expected return value: <div><ul><li>This is a list</li><li>with items</li><li>and <i>more</i> items</li></ul><ol><li>This is an <code>ordered</code> list</li><li>with items</li><li>and more items</li></ol></div>")
-        
+def get_files(path):
+    for file in path:
+        print(file)
+        if os.path.isfile(os.path.join('./static',file))==False:
+            print(os.path.join('./static',file))
+    
 main()
