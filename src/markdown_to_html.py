@@ -10,6 +10,8 @@ def markdown_to_html_node(markdown):
 
     for block in blocks:
         block_type = block_to_block_type(block)
+        if block == "":
+            continue
 
         if block_type == BlockTypes.PARAGRAPH:
             return_list.append(block_type_paragraph(block, "p"))

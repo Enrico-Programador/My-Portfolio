@@ -2,6 +2,7 @@ import os
 import shutil
 
 from copy_files import get_files
+from extract_file import extract_title
 
 
 def main():
@@ -11,6 +12,17 @@ def main():
     list_dir = os.listdir(path='./static')
     path = './static'
     get_files(path, list_dir)
+    md = '''
+
+    
+
+    
+# Johnson baby
+
+flinston 
+
+'''
+    print(extract_title(md))
 
 
     
