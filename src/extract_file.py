@@ -1,9 +1,5 @@
 
 
-from block_markdown import markdown_to_blocks
-from markdown_to_html import markdown_to_html_node
-
-
 def extract_title(markdown):
     search_heading = markdown.split()
     if search_heading[0] != "#":
@@ -17,5 +13,8 @@ def extract_title(markdown):
         else:
             first_heading = items.strip().lstrip("#").strip()
             break
-
     return first_heading
+
+def generate_page(from_path, template_path, dest_path):
+    print(f"generating file from {from_path} to {dest_path} using {template_path}")
+    
