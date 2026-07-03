@@ -18,7 +18,6 @@ def markdown_to_blocks(markdown: str) -> list[str]:
             continue
         
         block = block.strip()
-        
         filtered_blocks.append(block)
     return filtered_blocks
     

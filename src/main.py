@@ -12,17 +12,7 @@ def main():
     list_dir = os.listdir(path='./static')
     path = './static'
     get_files(path, list_dir)
-    md = '''
-
     
-
-    
-# Johnson baby
-
-flinston 
-
-'''
-    print(extract_title(md))
 
 
     
