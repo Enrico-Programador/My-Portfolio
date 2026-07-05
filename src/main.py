@@ -2,17 +2,21 @@ import os
 import shutil
 
 from copy_files import get_files
-from extract_file import extract_title
+from extract_file import extract_title, generate_page
 
 
 def main():
     print("running main...")
-    shutil.rmtree(path='./public')
-    os.mkdir(path='./public')
+    if os.path.exists(path='./public') == False:
+        os.mkdir(path='./public')
+    else:
+        shutil.rmtree(path='./public')
+        os.mkdir(path='./public')
     list_dir = os.listdir(path='./static')
     path = './static'
     get_files(path, list_dir)
-    
+
+    generate_page("./content/index.md", "./static/index.css", "./public")
 
 
     
