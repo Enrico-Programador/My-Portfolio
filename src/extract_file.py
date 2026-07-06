@@ -1,8 +1,7 @@
 
 from os import read
 import os
-import shutil
-from copy_files import get_files
+from copy_file import get_files
 from markdown_to_html import markdown_to_html_node
 
 
@@ -36,7 +35,7 @@ def generate_page(from_path, template_path, dest_path):
 
     if dest_dir_path != "":
         os.makedirs(dest_dir_path, exist_ok=True)
-        
+
     with open(dest_path, "w") as file:
         file.write(template_data.replace('{{ Title }}', f' {title} ').replace('{{ Content }}', f' {content} '))
         

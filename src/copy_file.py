@@ -17,3 +17,6 @@ def get_files(path, list_dir, copy_to='./public'):
             os.mkdir(final_file_path)
             list_dir = os.listdir(file_path)
             get_files(file_path, list_dir, final_file_path)
+
+def generate_pages_recursive(dir_path_content, template_path, dest_dir_path):
+    pass
