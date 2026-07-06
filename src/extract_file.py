@@ -1,7 +1,4 @@
-
-from os import read
 import os
-from copy_file import get_files
 from markdown_to_html import markdown_to_html_node
 
 

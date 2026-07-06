@@ -1,7 +1,7 @@
 import os
 import shutil
 
-from copy_file import get_files
+from copy_file import generate_pages_recursive, get_files
 from extract_file import generate_page
 
 list_dir = os.listdir(path='./static')
@@ -23,6 +23,9 @@ def main():
                   template_path,
                   os.path.join(public_path, "index.html"),)
     
+    generate_pages_recursive(content_path, 
+                             template_path, 
+                             public_path)
 
     
 main()
