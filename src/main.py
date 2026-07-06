@@ -15,9 +15,8 @@ def main():
     list_dir = os.listdir(path='./static')
     path = './static'
     get_files(path, list_dir)
-
-    generate_page("./content/index.md", "./static/index.css", "./public")
-
+    generate_page("./content/index.md", "./template.html", "./public/index.html")
+    
 
     
 main()
