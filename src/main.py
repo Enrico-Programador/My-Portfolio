@@ -18,11 +18,11 @@ def main():
     if len(sys.argv) > 1:
         base_path = sys.argv[1]
 
-    if os.path.exists(path='./docs') == False:
-        os.mkdir(path='./docs')
+    if os.path.exists(public_path) == False:
+        os.mkdir(public_path)
     else:
-        shutil.rmtree(path='./docs')
-        os.mkdir(path='./docs')
+        shutil.rmtree(public_path)
+        os.mkdir(public_path)
     
     get_files(static_path, list_dir, public_path)
     
