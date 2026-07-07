@@ -17,7 +17,7 @@ def extract_title(markdown):
             break
     return first_heading
 
-def generate_page(from_path, template_path, dest_path):
+def generate_page(from_path, template_path, dest_path, base_path):
     print(f"generating file from {from_path} to {dest_path} using {template_path}")
     file_data = ""
     template_data = ""
@@ -34,6 +34,9 @@ def generate_page(from_path, template_path, dest_path):
         os.makedirs(dest_dir_path, exist_ok=True)
 
     with open(dest_path, "w") as file:
-        file.write(template_data.replace('{{ Title }}', f' {title} ').replace('{{ Content }}', f' {content} '))
+        file.write(template_data.replace('{{ Title }}', f' {title} ')
+                   .replace('{{ Content }}', f' {content} ')
+                   .replace('href="/', f'href="{base_path}')
+                   .replace('src="/', f'src="{base_path}'))
         
     
