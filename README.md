@@ -24,8 +24,8 @@ Use the standard formatting for the .md file, the conversion will do all the wor
 The static site generator will extract the .md file into nodes then separate each node into blocks. Based on the type of syntax used it will use the **markdown to html** function to make a conversion based on the type of node presented. It will create the documents into the docs dir, recursively. Each dir is a page of the site. The images are inside the static dir.
 
 
-This is a open source project with no financial intencion, it was all created by me from scratch with the help of boot.dev project.
-I did not use any AI to write this project, but I tried to optmize it my own way.
+This is a open source project with no financial intention, it was all created by me from scratch with the help of boot.dev project.
+I did not use any AI to write this project, but I tried to optimize it my own way.
 
 
 ## Contact
