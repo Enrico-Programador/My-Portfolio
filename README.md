@@ -17,7 +17,7 @@ Use the standard formatting for the .md file, the conversion will do all the wor
 - Blockquote: Place a > before the text to indent it as a quote.
 - Line Break: Leave an entirely blank line between two blocks of text to start a new paragraph.
 - Lists: use - for each item in the list
-- Ordered lists: user *Number*.)
+- Ordered lists: use *1.)* for each subsequent numbers
 
 ## How it works:
 
