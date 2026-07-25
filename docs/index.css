@@ -93,6 +93,8 @@ blockquote {
 }
 
 img {
+  display: block;
+  margin: 0 auto;
   max-width: 100%;
   height: auto;
   border-radius: 6px;
@@ -127,4 +129,19 @@ img {
 
 ::-webkit-scrollbar-corner {
   background: #1f1c25;
+}
+
+.hero {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+}
+
+.hero img {
+    width: 220px;
+    border-radius: 50%;
+}
+
+.hero div {
+    flex: 1;
 }
