@@ -11,7 +11,7 @@ Use the standard formatting for the .md file, the conversion will do all the wor
 - Bold: **text**
 - Italics: *text*
 - Link: [Click here](https://example.com)
-- Image: ![Alt text](image-url.jpg)
+- Image: ![Alt text] (image-url.jpg)
 - Inline Code: Wrap words in single backticks like `code`.
 - Fenced Blocks: Enclose multiple lines with three backticks (```) on a line above and below the block.
 - Blockquote: Place a > before the text to indent it as a quote.
@@ -20,5 +20,4 @@ Use the standard formatting for the .md file, the conversion will do all the wor
 ## Contact
 
 If you liked the project you can contact me at:
-enrico2015ap@gmail.com
-+55 (19) 99773-2112
+enrico2015ap@gmail.com or +55 (19) 99773-2112
