@@ -1,6 +1,6 @@
 body {
-  background-color: #1f1c25;
-  color: #f0e6d1;
+  background-color: #ffffff;
+  color: #252625;
   font-family: "Luminari", "Georgia", serif;
   line-height: 1.7;
   margin: 0;
@@ -20,10 +20,10 @@ h3,
 h4,
 h5,
 h6 {
-  color: #dda15e;
+  color: #000000;
   margin-top: 24px;
   margin-bottom: 16px;
-  text-shadow: 2px 2px 4px #000;
+  text-shadow: 2px 2px 4px #b5b5b5;
 }
 
 h1 {

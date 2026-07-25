@@ -2,8 +2,8 @@
 
 [< Back Home](/)
 
-Give me a call anytime to chat about Tolkien!
+Give me a call if you liked my projects!
 
-`555-555-5555`
+`+55 (19) 99773-2112`
 
-**"Váya márië."**
+**Thanks for taking a look at my portfolio**
