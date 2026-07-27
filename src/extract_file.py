@@ -28,9 +28,10 @@ def generate_page(from_path, template_path, dest_path, base_path):
     with open(f'{template_path}', encoding="utf-8") as f:
         template_data = f.read()
     
-    convert_exception(file_data)
+    
     
     title = extract_title(file_data)
+    file_data = convert_exception(file_data)
     content = markdown_to_html_node(file_data).to_html()
     dest_dir_path = os.path.dirname(dest_path)
     if dest_dir_path != "":

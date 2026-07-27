@@ -8,7 +8,6 @@ class BlockTypes(Enum):
     QUOTE = "quote"
     UNORDERED_LIST = "unordered_list"
     ORDERED_LIST = "ordered_list"
-    PORTRAIT = "portrait"
 
 def markdown_to_blocks(markdown: str) -> list[str]:
     blocks = markdown.split("\n\n")
@@ -27,8 +26,7 @@ def block_to_block_type(markdown_text):
         return BlockTypes.HEADING
     if markdown_text.startswith(("```")) and markdown_text.endswith(("```")):
         return BlockTypes.CODE
-    if markdown_text.startswith((":::hero")) and markdown_text.endswith((":::")):
-            return BlockTypes.PORTRAIT
+    
     paragraphs = markdown_text.split("\n")
     is_quote = True
     is_unordered_list = True

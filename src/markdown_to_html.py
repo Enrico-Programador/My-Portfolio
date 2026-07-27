@@ -12,7 +12,7 @@ def markdown_to_html_node(markdown):
         block_type = block_to_block_type(block)
         if block == "":
             continue
-
+        
         if block_type == BlockTypes.PARAGRAPH:
             return_list.append(block_type_paragraph(block, "p"))
             
@@ -92,11 +92,13 @@ def block_type_heading(block):
 def block_type_paragraph(block, block_type):
     return text_to_children(block, block_type)
 
+
 def text_to_children(block, block_type):
     split = text_to_textnodes(block.replace('\n', ' ').strip())
     nodes_list = []
     for nodes in split:
         leaf = text_node_to_html_node(nodes)
         nodes_list.append(leaf)
-
+    
     return ParentNode(block_type, nodes_list)
+
