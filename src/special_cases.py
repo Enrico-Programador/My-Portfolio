@@ -7,4 +7,4 @@ def convert_exception(file_data):
     if match == None:
         return match
 
-    print(match.group(1))
+    print(match.group(0))

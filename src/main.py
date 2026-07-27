@@ -2,7 +2,7 @@ import os
 import shutil
 import sys
 
-from src.copy_file import generate_pages_recursive, get_files
+from copy_file import generate_pages_recursive, get_files
 
 default_basepath = '/'
 list_dir = os.listdir(path='./static')
