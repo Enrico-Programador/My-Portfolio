@@ -29,14 +29,14 @@ I did not use any AI to write this project, but I tried to optimize it my own wa
 
 ### Overview of the functions:
 
-Block mardown - Made to edit big blocks of text
-Copy file - Recursive function to copy from content and static to blocks
-Extract file - Calls the function .to_html to convert the .md file to html file from a path to a destined path
-Extract markdwon - Returns a list with a node with a image or link markdown extracted from the .md file, this function is made only to be used by split nodes.
-HTML nodes - The main function here it to_html, it converts a node into html text.
-Markdwon to Html - It will convert a .md text block to html using text_to_children and ParentNode
-Split Nodes - Split nodes that are in one line, for exemple, *bold* and _italic_ nodes
-Text Nodes - Takes care of one line nodes, converting Text into nodes
+- Block mardown - Made to edit big blocks of text
+- Copy file - Recursive function to copy from content and static to blocks
+- Extract file - Calls the function .to_html to convert the .md file to html file from a path to a destined path
+- Extract markdwon - Returns a list with a node with a image or link markdown extracted from the .md file, this function is made only to be used by split nodes.
+- HTML nodes - The main function here it to_html, it converts a node into html text.
+- Markdwon to Html - It will convert a .md text block to html using text_to_children and ParentNode
+- Split Nodes - Split nodes that are in one line, for exemple, *bold* and _italic_ nodes
+- Text Nodes - Takes care of one line nodes, converting Text into nodes
 
 ## Contact
 
