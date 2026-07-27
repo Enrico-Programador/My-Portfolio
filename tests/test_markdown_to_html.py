@@ -2,7 +2,7 @@
 
 import unittest
 
-from markdown_to_html import markdown_to_html_node
+from src.markdown_to_html import markdown_to_html_node
 
 
 class TestBlockMarkdown(unittest.TestCase):

@@ -1,13 +1,11 @@
 import unittest
 
-from extract_file import extract_title
+from src.extract_file import extract_title
 
 class TestExtractFile(unittest.TestCase):
     def test_extract_file(self):
         md = '''
 
-        
-        
 
 # first heading
 

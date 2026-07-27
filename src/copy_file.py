@@ -1,7 +1,7 @@
 import os
 import shutil
 
-from extract_file import generate_page
+from src.extract_file import generate_page
 
 
 def get_files(path, list_dir, copy_to):

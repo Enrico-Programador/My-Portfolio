@@ -1,7 +1,6 @@
 import unittest
-from htmlnode import HTMLNode, LeafNode, ParentNode
-from splitnode import split_nodes_delimiter, split_nodes_image, split_nodes_link, text_to_textnodes
-from textnode import TextNode, TextTypes
+from src.splitnode import split_nodes_delimiter, split_nodes_image, split_nodes_link, text_to_textnodes
+from src.textnode import TextNode, TextTypes
 
 class TestSplit_nodes_delimiter(unittest.TestCase):
     def test_split_nodes_delimiter(self):
