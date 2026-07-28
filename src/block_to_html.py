@@ -98,8 +98,8 @@ def block_type_paragraph(block, block_type):
 def block_type_hero(block):
     block = block.replace(":::hero", '').replace(":::", '')
     children = []
-    split2 = block.split('\n')
-    for line in split2:
+    split = block.split('\n')
+    for line in split:
         if line == "":
             continue
 
