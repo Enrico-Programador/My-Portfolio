@@ -2,8 +2,6 @@ import os
 from block_to_html import markdown_to_html_node
 import re
 
-from special_cases import convert_exception
-
 def extract_title(markdown):
     search_heading = markdown.split()
     if search_heading[0] != "#":
