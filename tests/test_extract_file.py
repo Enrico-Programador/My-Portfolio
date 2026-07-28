@@ -1,6 +1,6 @@
 import unittest
 
-from src.extract_file import extract_title
+from src.generate_page import extract_title
 
 class TestExtractFile(unittest.TestCase):
     def test_extract_file(self):

@@ -31,9 +31,25 @@ def generate_page(from_path, template_path, dest_path, base_path):
     dest_dir_path = os.path.dirname(dest_path)
     if dest_dir_path != "":
         os.makedirs(dest_dir_path, exist_ok=True)
+    header = """
+<header>
+    <nav class="navbar">
+        <a href="{0}" class="logo">Enrico Matiazzo Garcia</a>
 
+        <ul class="nav-links">
+            <li><a href="{0}">Home</a></li>
+            <li><a href="{0}projects">Projects</a></li>
+            <li><a href="{0}contact">Contact</a></li>
+            <li><a href="https://github.com/Enrico-Programador">GitHub</a></li>
+            <li><a href="https://www.linkedin.com/in/enrico-m-8405a3127/">LinkedIn</a></li>
+        </ul>
+    </nav>
+</header>
+""".format(base_path)
     with open(dest_path, "w") as file:
-        file.write(template_data.replace('{{ Title }}', f' {title} ')
+        file.write(template_data
+                   .replace("{{ Header }}", header)
+                   .replace('{{ Title }}', f' {title} ')
                    .replace('{{ Content }}', f' {content} ')
                    .replace('href="/', f'href="{base_path}')
                    .replace('src="/', f'src="{base_path}'))

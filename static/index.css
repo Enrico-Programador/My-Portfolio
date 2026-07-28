@@ -1,14 +1,11 @@
 body {
-  background-color: #ffffff;
-  color: #252625;
-  font-family: "Luminari", "Georgia", serif;
-  line-height: 1.7;
-  margin: 0;
-  padding: 20px;
-  max-width: 800px;
-  margin-left: auto;
-  margin-right: auto;
+    margin: 0;
+    background: white;
+    color: #252625;
+    font-family: "Luminari", "Georgia", serif;
+    line-height: 1.7;
 }
+
 
 b {
   font-weight: 900;
@@ -22,12 +19,13 @@ h5,
 h6 {
   color: #000000;
   margin-top: 24px;
-  margin-bottom: 16px;
+  margin-bottom: 30px;
   text-shadow: 2px 2px 4px #b5b5b5;
 }
 
 h1 {
   font-size: 2.5em;
+  text-align: center;
 }
 
 h2 {
@@ -137,6 +135,10 @@ img {
     align-items: center;
 }
 
+.hero h1 {
+    text-align: center;
+}
+
 .hero img {
     width: 220px;
     border-radius: 50%;
@@ -144,4 +146,55 @@ img {
 
 .hero div {
     flex: 1;
+}
+
+header {
+    width: 100%;
+    background: #1f1f1f;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    color: white;
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.nav-links {
+    display: flex;
+    gap: 2rem;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.nav-links a:hover {
+    color: #5fa8ff;
+}
+
+article {
+    max-width: 900px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.nav-links a.active {
+    color: #5fa8ff;
+    border-bottom: 2px solid #5fa8ff;
 }
