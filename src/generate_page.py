@@ -34,12 +34,12 @@ def generate_page(from_path, template_path, dest_path, base_path):
     header = """
 <header>
     <nav class="navbar">
-        <a href="{0}" class="logo">Enrico Matiazzo Garcia</a>
+        <a href="/" class="logo">Enrico Matiazzo Garcia</a>
 
         <ul class="nav-links">
-            <li><a href="{0}">Home</a></li>
-            <li><a href="{0}projects">Projects</a></li>
-            <li><a href="{0}contact">Contact</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/projects">Projects</a></li>
+            <li><a href="/contact">Contact</a></li>
             <li><a href="https://github.com/Enrico-Programador">GitHub</a></li>
             <li><a href="https://www.linkedin.com/in/enrico-m-8405a3127/">LinkedIn</a></li>
         </ul>
