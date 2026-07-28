@@ -12,7 +12,10 @@ def markdown_to_html_node(markdown):
         block_type = block_to_block_type(block)
         if block == "":
             continue
-        
+
+        if block_type == BlockTypes.HERO:
+            return_list.append(block_type_hero(block))
+
         if block_type == BlockTypes.PARAGRAPH:
             return_list.append(block_type_paragraph(block, "p"))
             
@@ -91,6 +94,22 @@ def block_type_heading(block):
 
 def block_type_paragraph(block, block_type):
     return text_to_children(block, block_type)
+
+def block_type_hero(block):
+    block = block.replace(":::hero", '').replace(":::", '')
+    children = []
+    split2 = block.split('\n')
+    for line in split2:
+        if line == "":
+            continue
+
+        node = text_to_textnodes(line)
+        for child in node:
+            children.append(text_node_to_html_node(child))
+    
+    hero = ParentNode("div", children, {"class": "hero"})
+    return ParentNode("section", [hero], {"class": "hero-content"})
+
 
 
 def text_to_children(block, block_type):

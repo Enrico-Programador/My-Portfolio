@@ -1,5 +1,5 @@
 import os
-from markdown_to_html import markdown_to_html_node
+from block_to_html import markdown_to_html_node
 import re
 
 from special_cases import convert_exception
@@ -31,7 +31,6 @@ def generate_page(from_path, template_path, dest_path, base_path):
     
     
     title = extract_title(file_data)
-    file_data = convert_exception(file_data)
     content = markdown_to_html_node(file_data).to_html()
     dest_dir_path = os.path.dirname(dest_path)
     if dest_dir_path != "":
