@@ -8,28 +8,26 @@ My trajectory with developing started in 2023 when I decided to learn a new skil
 
 ### Python 
 
-1) Book Bot
+1. Book Bot
+2. Asteroids Game
+3. AI Agent
+4. Static Site Generator
 
-2) Asteroids Game
 
-3) AI Agent
-
-4) Static Site Generator
 
 
 
 ### Java 
 
-1) Tic Tac Toe (my very first project)
+1. Tic Tac Toe (my very first project)
+2. Championship Simulator
 
-2) Championship Simulator
+
 
 
 
 ### JavaScript
 
-1) Contract Generator
-
-2) WhatsApp Message Bot
-
-3) Teacher Payment Sheet Generator
+1. Contract Generator
+2. WhatsApp Message Bot
+3. Teacher Payment Sheet Generator
