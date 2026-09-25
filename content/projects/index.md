@@ -8,9 +8,6 @@ On my last few years coding I made quite a few different tools and applications.
 All projects are ordered by complexity Simple -> Complex if you are interested in the most complex ones.
 
 
-
-
-
 ### Java
 
 My first projects when I starte learning to code, they are simple and unoptimized but show a importante step of my journey.
@@ -21,21 +18,15 @@ Use of AI: None
 - Tic-Tac-Toe
 
 
-
-
-
 ### Python
 
 My projects that I used to deep dive into code, they are ordered from most simple to most complex.
 Use of AI: None
 
-- Book Bot
+- [Book Bot](/blog/bookbot)
 - Asteroids
 - AI Agent
 - Static Site Generator
-
-
-
 
 
 ### JavaScript
